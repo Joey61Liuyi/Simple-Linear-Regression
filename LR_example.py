@@ -13,6 +13,7 @@ class LinearRegressionUsingGD:
     Attributes
     ----------
     w_ : weights/ after fitting the model
+    bias_ : bias / after fitting the model
     cost_ : total error of the model after each iteration
     """
 
@@ -41,9 +42,9 @@ class LinearRegressionUsingGD:
         for _ in range(self.n_iterations):
             y_pred = np.dot(x, self.w_) + self.bias_
             residuals = y_pred - y
-            gradient_vector = np.dot(x.T, residuals)
+            gradient_vector_weight = np.dot(x.T, residuals)
             gradient_vector_bias = np.sum(residuals) 
-            self.w_ -= (self.eta / m) * gradient_vector
+            self.w_ -= (self.eta / m) * gradient_vector_weight
             self.bias_ -= (self.eta / m) * gradient_vector_bias
             cost = np.sum((residuals ** 2)) / (2 * m)
             self.cost_.append(cost)
