@@ -60,7 +60,7 @@ class LinearRegressionUsingGD:
         -------
         Predicted value
         """
-        return np.dot(x, self.w_)
+        return np.dot(x, self.w_) + self.bias_
     
     
 def run():
