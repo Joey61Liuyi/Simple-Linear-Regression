@@ -1,4 +1,3 @@
-# imports
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error, r2_score
@@ -17,7 +16,7 @@ class LinearRegressionUsingGD:
     cost_ : total error of the model after each iteration
     """
 
-    def __init__(self, eta=0.005, n_iterations=1000):
+    def __init__(self, eta=0.05, n_iterations=10000):
         self.eta = eta
         self.n_iterations = n_iterations
 
@@ -43,7 +42,7 @@ class LinearRegressionUsingGD:
             y_pred = np.dot(x, self.w_) + self.bias_
             residuals = y_pred - y
             gradient_vector = np.dot(x.T, residuals) * (1/m)
-            gradient_vector_bias = np.sum(rediduals) * (1/m)
+            gradient_vector_bias = np.sum(residuals) * (1/m)
             self.w_ -= (self.eta / m) * gradient_vector
             self.bias_ -= (self.eta / m) * gradient_vector_bias
             cost = np.sum((residuals ** 2)) / (2 * m)
