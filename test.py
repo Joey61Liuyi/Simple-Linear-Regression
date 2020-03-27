@@ -42,8 +42,8 @@ class LinearRegressionUsingGD:
         for _ in range(self.n_iterations):
             y_pred = np.dot(x, self.w_) + self.bias_
             residuals = y_pred - y
-            gradient_vector = np.dot(x.T, residuals) * (2/m)
-            gradient_vector_bias = np.sum(rediduals) * (2/m)
+            gradient_vector = np.dot(x.T, residuals) * (1/m)
+            gradient_vector_bias = np.sum(rediduals) * (1/m)
             self.w_ -= (self.eta / m) * gradient_vector
             self.bias_ -= (self.eta / m) * gradient_vector_bias
             cost = np.sum((residuals ** 2)) / (2 * m)
